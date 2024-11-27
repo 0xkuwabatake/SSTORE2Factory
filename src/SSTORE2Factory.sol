@@ -20,17 +20,18 @@ import {SSTORE2} from "lib/solady/src/utils/SSTORE2.sol";
  *   Because of that reason, neither storage provided by this contract to store the `pointer`
  *   nor a tracker to track if a `pointer` from a `data` either with or without `salt`
  *   had been deployed or not.
- * - To get the value of `pointer` with its `index` (it depends on which method is being called) 
- *   are queryable via emitted {Pointer} event from each successful transaction.
+ * - To get the value of `pointer` with or without its `index` is/are queryable 
+ *   via emitted {Pointer} event from each successful transaction.
  * - Every state-changing method is marked as payable merely for the sake of gas optimization,
  *   meaning the caller does NOT need to send ether to this contract when sending a transaction.
  *   Therefore, make sure to always set msg.value to 0 (zero) before calling a method.
  * 
  * @custom:warning
- * - This contract has the capability to receive ether, therefore a withdrawal function to `_RECEIVER` 
- *   is provided just in case the ether balance of this contract is non-zero. 
- *   But, it does not mean the `_RECEIVER` must refund the received ether 
- *   to whichever caller had sent ether to this contract whether intentionally or not.
+ * - This contract has the capability to receive ether,
+ *   therefore a withdrawal function to `_RECEIVER` is provided 
+ *   just in case the ether balance of this contract is non-zero. 
+ *   With this feature, it does not mean the `_RECEIVER` must refund the received ether 
+ *   to whichever caller address had sent ether to this contract.
  */
 contract SSTORE2Factory { 
 
@@ -118,8 +119,8 @@ contract SSTORE2Factory {
     /**
      * @dev Deploy `data` as storage contract with `salt` in batch 
      * and returns its counterfactual `pointer`.
-     * @param data  The data that will be deployed via {SSTORE2 - writeCounterFactual}.
-     * @param salt  The nonce that will be passed into {SSTORE2 - writeCounterfactual}.
+     * @param data The data that will be deployed via {SSTORE2 - writeCounterFactual}.
+     * @param salt The nonce that will be passed into {SSTORE2 - writeCounterfactual}.
      * @custom:note Once `data` with specific `salt` is deployed, it can't not be redeployed.
      */
     function writeCounterfactual(bytes[] calldata data, bytes32[] calldata salt) external payable {
