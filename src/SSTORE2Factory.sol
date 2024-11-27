@@ -6,31 +6,31 @@ import {SSTORE2} from "lib/solady/src/utils/SSTORE2.sol";
 /**
  * @title  SSTORE2Factory
  * @author 0xkuwabatake(0xkuwabatake)
- * @notice A factory contract to deploy any arbitrarily `data` with or without `salt`
+ * @notice A factory contract to deploy any arbitrary `data` with or without `salt`
  *         as storage contract.
- * @dev    All of the methods of this contract are just external or public visibility method
+ * @dev    All of the methods of this contract are just external or public visibility methods
  *         to utilize Solady-SSTORE2 library by vectorized.eth:
  *         https://github.com/Vectorized/solady/blob/main/src/utils/SSTORE2.sol
  *        
  * @custom:notes
  * - The main purpose of this contract is to get the storage contract address or `pointer` 
- *   from each `data` either with or without `salt` (it depends on the method being called)
- *   that been deployed as storage contract and then store its value at another contract 
+ *   from each `data` either with or without `salt` (it depends on which method is being called)
+ *   that has been deployed as a storage contract and then stored its value at another contract 
  *   independently from this contract.
  *   Because of that reason, neither storage provided by this contract to store the `pointer`
  *   nor a tracker to track if a `pointer` from a `data` either with or without `salt`
  *   had been deployed or not.
- * - To get the value of `pointer` with its `index` (it depends on the method being called) 
+ * - To get the value of `pointer` with its `index` (it depends on which method is being called) 
  *   are queryable via emitted {Pointer} event from each successful transaction.
- * - Every state changing methods are marked as payable merely for the sake of gas optimisation,
+ * - Every state-changing method is marked as payable merely for the sake of gas optimization,
  *   meaning the caller does NOT need to send ether to this contract when sending a transaction.
  *   Therefore, make sure to always set msg.value to 0 (zero) before calling a method.
  * 
  * @custom:warning
- * - This contract has a capability to receive ether, therefore a withdrawal function to `_RECEIVER` 
+ * - This contract has the capability to receive ether, therefore a withdrawal function to `_RECEIVER` 
  *   is provided just in case the ether balance of this contract is non-zero. 
- *   But, it does not mean the `_RECEIVER` has an obligation to refund the received ether 
- *   to whichever caller that had sent ether to this contract either intentionally or not.
+ *   But, it does not mean the `_RECEIVER` must refund the received ether 
+ *   to whichever caller had sent ether to this contract whether intentionally or not.
  */
 contract SSTORE2Factory { 
 
