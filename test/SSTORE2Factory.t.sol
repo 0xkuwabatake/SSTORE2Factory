@@ -7,7 +7,7 @@ import "../src/SSTORE2Factory.sol";
 contract SSTORE2FactoryTest is Test {
     SSTORE2Factory factory;
 
-    address constant _RECEIVER = 0xfa98aFe34D343D0e63C4C801EBce01d9D4459ECa;
+    address constant _RECEIVER = 0x9500E1518EcBD22e5AfCB39daadb93617707b588;
 
     event Pointer(uint256 index, address pointer);
     event Pointer(address pointer);

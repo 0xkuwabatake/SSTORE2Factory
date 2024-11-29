@@ -40,7 +40,7 @@ contract SSTORE2Factory {
     //////////////////////////////////////////////////////////////*/
 
     /// @dev Ether receiver address.
-    address private constant _RECEIVER = 0xfa98aFe34D343D0e63C4C801EBce01d9D4459ECa; /* ACHTUNG ! */
+    address private constant _RECEIVER = 0x9500E1518EcBD22e5AfCB39daadb93617707b588;
 
     /*//////////////////////////////////////////////////////////////
                             CUSTOM EVENTS
